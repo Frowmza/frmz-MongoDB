@@ -1,0 +1,16 @@
+{
+  "name": "MongoDB-Wrapper",
+  "version": "0.1.0",
+  "main": "main.js",
+  "author": "Frowmza",
+  "license": "none",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^18.11.18",
+    "mongodb": "^4.13.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
