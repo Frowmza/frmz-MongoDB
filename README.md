@@ -1,12 +1,18 @@
 # MongoDB Wrapper
 
-This is a Node.js library for wrapping the [MongoDB Driver](https://mongodb.github.io/node-mongodb-native/).
+This is a Node.js library for wrapping the [MongoDB Driver](https://mongodb.github.io/node-mongodb-native/) Written with Typescript.
 
 # Connecting to the Database
 To connect to a MongoDB database, you need to add the following settings in .cfg
 ```cfg
 set mongodbUrl "mongodb://localhost:27017" #localhost
 set mongodbDatabase "fivem" #database
+```
+# Installation
+
+```
+yarn
+npx tsc
 ```
 
 # Available Operations
