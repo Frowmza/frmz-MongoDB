@@ -1,6 +1,6 @@
 # MongoDB Wrapper
 
-This is a Node.js library for wrapping the MongoDB driver.
+This is a Node.js library for wrapping the [MongoDB Driver](https://mongodb.github.io/node-mongodb-native/).
 
 # Connecting to the Database
 To connect to a MongoDB database, you need to add the following settings in .cfg
