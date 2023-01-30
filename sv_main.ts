@@ -1,13 +1,14 @@
 import { UpdateResult, WithId, Document, MongoClient, MongoClientOptions, Db } from 'mongodb'
 /* @ts-ignore */
-const url: string = GetConvar("mongodb_url", "mongodb://localhost:27017")
+const url: string = GetConvar("mongodbUrl", "none")
 /* @ts-ignore */
-const dbName: string = GetConvar("mongodb_database", "fivem")
+const dbName: string = GetConvar("mongodbDatabase", "none")
+/* @ts-ignore */
+RegisterNetEvent('frmz-mongodb:DatabaseConnected')
 
 type UpdatedDocument = WithId<Document> & {
     _id: string
 }
-
 class MongoDB {
     client: MongoClient
     dbName: string
@@ -15,6 +16,7 @@ class MongoDB {
     db: Db
 
     constructor(url: string, dbName: string) {
+        if (url == 'none' || dbName == 'none') throw new Error('Both `url` and `dbName` must be provided and cannot be "none".');
         this.dbName = dbName
         this.client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true } as MongoClientOptions)
         this.connected = false
@@ -38,8 +40,9 @@ class MongoDB {
         const dbInfo = await admin.listDatabases()
         const isDbExist = dbInfo.databases.some((db) => db.name === this.dbName)
         this.connected = isDbExist
-        if (isDbExist) console.log(`[MongoDB] Connected to database "${this.dbName}".`)
-        else console.log(`[MongoDB] Failed connecting to database "${this.dbName}".`)
+        /* @ts-ignore */
+        if (isDbExist) {emit("frmz-mongodb:DatabaseConnected"); console.log(`\x1b[36m[MongoDB]\x1b[0m Connected to database "${this.dbName}".`)}
+        else console.log(`\x1b[36m[MongoDB]\x1b[31m[ERROR]\x1b[0m Failed connecting to database "${this.dbName}".`)
         return isDbExist
     }
 
