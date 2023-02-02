@@ -94,7 +94,7 @@ const mongo = new MongoDB(url, dbName);
     }
 })()
 
-const handleCallbackAndError = (result, callback) => {
+const handleCallbackAndError = (result: string | string[] | UpdatedDocument | Document | (UpdatedDocument | null)[] | UpdateResult | null, callback?: Function) => {
   if (!mongo.isConnected()) return callback ? callback(true, 'Not connected to MongoDB') : { error: true, reason: 'Not connected to MongoDB' }
   return callback ? callback(false, result) : { error: false, result }
 }
