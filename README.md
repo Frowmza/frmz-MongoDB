@@ -1,4 +1,4 @@
-# MongoDB Wrapper
+# MongoDB Wrapper for fiveM
 
 This is a Node.js library for wrapping the [MongoDB Driver](https://mongodb.github.io/node-mongodb-native/) Written with Typescript.
 
